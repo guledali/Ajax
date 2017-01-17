@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link href='//fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/main.css">
+  <title>AJAX with JavaScript</title>
+  <script>
+
+    // Step 1. Create an XMLHttp Request object
+    //creating a variable var xhr
+    // XMLHttpRequest is required everytime you requesting/using ajax
+    var xhr = new XMLHttpRequest();
+
+    // Step 2. Create a callback function
+    // We want to get that response and update our page
+     xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4) {
+         document.getElementById('ajax').innerHTML = xhr.responseText;
+       }
+     };
+     // Step 3. Open a request.
+     // xhr object has a method or function called open.
+     // You give the browser to (http method) you going to use GET or POST
+     // The url is where file is going sidebar.html
+     xhr.open('GET', 'sidebar.html');
+     function sendAJAX() {
+       // Step 4. Send the request
+       xhr.send();
+       document.getElementById('load').style.display = "none";
+     }
+
+  </script>
+</head>
+<body>
+  <div class="grid-container centered">
+    <div class="grid-100">
+      <div class="contained">
+        <div class="grid-100">
+          <div class="heading">
+            <h1>Bring on the AJAX</h1>
+            <button id="load" onclick="sendAJAX()">Bring it!</button>
+          </div>
+          <div id="ajax">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
